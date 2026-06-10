@@ -1,0 +1,49 @@
+name: Juneteenth
+options:
+  bundleIdPrefix: com.juneteenth
+  deploymentTarget:
+    iOS: "16.0"
+  xcodeVersion: "16.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    DEVELOPMENT_TEAM: ""
+
+targets:
+  Juneteenth:
+    type: application
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources:
+      - path: Juneteenth
+        type: group
+    resources:
+      - path: Juneteenth/Resources
+        type: folder
+    settings:
+      base:
+        INFOPLIST_FILE: Juneteenth/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: com.juneteenth.app
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        SWIFT_EMIT_LOC_STRINGS: YES
+    info:
+      path: Juneteenth/Info.plist
+      properties:
+        CFBundleName: Juneteenth
+        CFBundleDisplayName: Juneteenth
+        CFBundleShortVersionString: "1.0.0"
+        CFBundleVersion: "1"
+        UILaunchScreen:
+          UIColorName: ""
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
