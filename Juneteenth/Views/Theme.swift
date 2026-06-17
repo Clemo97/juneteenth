@@ -23,8 +23,8 @@ enum Theme {
 
     // MARK: Geometry
 
-    static let tileCornerRadius: CGFloat = 6
-    static let tileGap: CGFloat          = 3
+    static let tileCornerRadius: CGFloat = 2
+    static let tileGap: CGFloat          = 1
 
     // MARK: Fonts
 

@@ -10,6 +10,8 @@
 		1176C2B08892023C88AA799D /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E973FA3BDEE91A96184E3E /* TileView.swift */; };
 		2700A5414E61477DE160C21C /* PuzzleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21244BBF67F7C2920A8CA166 /* PuzzleCardView.swift */; };
 		285B24CAF1ECE8545684D459 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E620F97BB338C497210C660 /* Theme.swift */; };
+		361A0C2EA0CB7FDBD99813FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D5B8D1DCD879370409773D /* AppDelegate.swift */; };
+		4139B63A139849BB9DE49BFB /* HistorianModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE5635A6CFB4399A1836388 /* HistorianModel.swift */; };
 		39C57E0F06EC9A19E4ADAF75 /* ImageSlicer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E20465A021CFB84785975 /* ImageSlicer.swift */; };
 		48FC8045C877999C62ADB60F /* PuzzleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAA63CE8DE76E7DD7A44540 /* PuzzleCard.swift */; };
 		4F962251059EB33E2392D5CB /* CardSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CA4C2865C58DBA11D1ADAC /* CardSelectionView.swift */; };
@@ -34,12 +36,14 @@
 		4DB0B3CFFD5FF80042C75B86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5194E4D7EB8221B5D740A345 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		665F5216801904908B909535 /* PuzzleState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleState.swift; sourceTree = "<group>"; };
+		7DE5635A6CFB4399A1836388 /* HistorianModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorianModel.swift; sourceTree = "<group>"; };
 		7E620F97BB338C497210C660 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		84CA4C2865C58DBA11D1ADAC /* CardSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSelectionView.swift; sourceTree = "<group>"; };
 		9734655977AC4DF85E5C6663 /* CompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionView.swift; sourceTree = "<group>"; };
 		98E973FA3BDEE91A96184E3E /* TileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
 		B86E20465A021CFB84785975 /* ImageSlicer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSlicer.swift; sourceTree = "<group>"; };
-		E0B29A1797A977BA08581E67 /* Juneteenth.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Juneteenth.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8D5B8D1DCD879370409773D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E0B29A1797A977BA08581E67 /* Juneteenth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Juneteenth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -47,6 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				0FAA63CE8DE76E7DD7A44540 /* PuzzleCard.swift */,
+				7DE5635A6CFB4399A1836388 /* HistorianModel.swift */,
 				665F5216801904908B909535 /* PuzzleState.swift */,
 				1A1B3CEC47C7C4AA41869694 /* Tile.swift */,
 			);
@@ -72,6 +77,7 @@
 		549D6F75D3A8F1C1AFF2ABA6 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				D8D5B8D1DCD879370409773D /* AppDelegate.swift */,
 				B86E20465A021CFB84785975 /* ImageSlicer.swift */,
 			);
 			path = Utilities;
@@ -144,7 +150,8 @@
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					E04161B70C8E91DDEC2B4505 = {
-						DevelopmentTeam = "";
+						DevelopmentTeam = 8J28578WR4;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -183,9 +190,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				361A0C2EA0CB7FDBD99813FC /* AppDelegate.swift in Sources */,
 				4F962251059EB33E2392D5CB /* CardSelectionView.swift in Sources */,
 				91CF09DF9F3C05E50E123F1D /* CompletionView.swift in Sources */,
 				A2506AC16D0F350017BC78E8 /* ContentView.swift in Sources */,
+				4139B63A139849BB9DE49BFB /* HistorianModel.swift in Sources */,
 				39C57E0F06EC9A19E4ADAF75 /* ImageSlicer.swift in Sources */,
 				57D82D3AA35251A25463364F /* JuneteenthApp.swift in Sources */,
 				48FC8045C877999C62ADB60F /* PuzzleCard.swift in Sources */,
@@ -206,7 +215,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8J28578WR4;
 				INFOPLIST_FILE = Juneteenth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -224,7 +235,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8J28578WR4;
 				INFOPLIST_FILE = Juneteenth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (

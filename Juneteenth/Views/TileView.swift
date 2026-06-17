@@ -48,8 +48,8 @@ struct TileView: View {
         // Lift / flatten shadow based on state
         .shadow(
             color: shadowColor,
-            radius: isBeingDragged ? 0 : 3,
-            x: 0, y: isBeingDragged ? 0 : 2
+            radius: isBeingDragged ? 0 : 1,
+            x: 0, y: isBeingDragged ? 0 : 1
         )
     }
 

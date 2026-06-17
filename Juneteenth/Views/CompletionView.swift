@@ -3,13 +3,19 @@ import SwiftUI
 // MARK: - CompletionView
 
 /// Bottom-sheet overlay that slides up when the puzzle is solved.
-/// Shows move count, a historical note about the image, and action buttons.
+///
+/// On iOS 26+ devices with Apple Intelligence, the static historical note is
+/// replaced by a richer AI-generated narrative that streams in word-by-word.
+/// On older devices the static note is shown unchanged — no degraded UX.
 struct CompletionView: View {
 
     let card: PuzzleCard
     let moveCount: Int
     let onPlayAgain: () -> Void
     let onChooseAnother: () -> Void
+
+    @StateObject private var historian = HistorianModel()
+    @State private var isPulsing = false
 
     var body: some View {
         VStack(spacing: 0) {
@@ -40,13 +46,8 @@ struct CompletionView: View {
 
                 ornamentalDivider
 
-                // Historical note
-                Text(card.historicalNote)
-                    .font(Theme.serif(.subheadline))
-                    .foregroundStyle(Theme.inkBrown.opacity(0.82))
-                    .multilineTextAlignment(.center)
-                    .lineSpacing(5)
-                    .padding(.horizontal, 28)
+                // Historical narrative — AI-generated or static fallback
+                historianSection
 
                 ornamentalDivider
 
@@ -93,9 +94,69 @@ struct CompletionView: View {
             )
         }
         .ignoresSafeArea(edges: .bottom)
+        .onAppear {
+            historian.generate(for: card)
+        }
     }
 
-    // MARK: Private
+    // MARK: - Historian Section
+
+    @ViewBuilder
+    private var historianSection: some View {
+        VStack(spacing: 10) {
+
+            // Pulsing badge — only while generating and no text has arrived yet
+            if historian.state == .generating && historian.narrative.isEmpty {
+                HStack(spacing: 5) {
+                    Image(systemName: "sparkles")
+                        .font(.caption)
+                        .foregroundStyle(Theme.goldAccent)
+                        .opacity(isPulsing ? 1.0 : 0.2)
+                        .onAppear {
+                            withAnimation(
+                                .easeInOut(duration: 0.75)
+                                .repeatForever(autoreverses: true)
+                            ) { isPulsing = true }
+                        }
+                    Text("Writing history\u{2026}")
+                        .font(.system(.caption, design: .serif).italic())
+                        .foregroundStyle(Theme.tileBorder.opacity(0.7))
+                }
+                .transition(.opacity)
+            }
+
+            // Main text — static note until tokens arrive, then narrative streams in
+            Text(displayedText)
+                .font(Theme.serif(.subheadline))
+                .foregroundStyle(Theme.inkBrown.opacity(0.82))
+                .multilineTextAlignment(.center)
+                .lineSpacing(5)
+                .padding(.horizontal, 28)
+
+            // Apple Intelligence attribution — only when generation is complete
+            if historian.state == .done {
+                HStack(spacing: 4) {
+                    Image(systemName: "sparkles")
+                        .font(.caption2)
+                    Text("Apple Intelligence")
+                        .font(.system(.caption2, design: .serif))
+                }
+                .foregroundStyle(Theme.tileBorder.opacity(0.45))
+                .transition(.opacity)
+            }
+        }
+        .animation(.easeInOut(duration: 0.35), value: historian.state)
+    }
+
+    // MARK: - Derived
+
+    /// Shows the growing narrative while streaming; falls back to the static
+    /// note before generation starts or when the model is unavailable.
+    private var displayedText: String {
+        historian.narrative.isEmpty ? card.historicalNote : historian.narrative
+    }
+
+    // MARK: - Private views
 
     private var ornamentalDivider: some View {
         HStack {
